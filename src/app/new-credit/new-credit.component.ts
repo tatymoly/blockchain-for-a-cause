@@ -33,14 +33,16 @@ export class NewCreditComponent {
   ) {
     this.requestFormValid();
   }
-  sendCoin(amount) {
-    console.log("Sending coins" + amount + " to " + "0xb1d28E599359545060F29eE73DeecE5ec69f03A4");
+  sendCoin() {
+    console.log("Sending coins" + this.totalTokens + " to " + "0xb1d28E599359545060F29eE73DeecE5ec69f03A4");
 
     this.angelTokenService
       .sendCoin(
+        // "0x2e174d31Bc05B503E038B9350606324eF5B84CF1",
+        // "0xb1d28E599359545060F29eE73DeecE5ec69f03A4",
         "0x2e174d31Bc05B503E038B9350606324eF5B84CF1",
         "0xb1d28E599359545060F29eE73DeecE5ec69f03A4",
-        amount
+        (this.totalTokens * 100)
       )
       .subscribe(
         (response: any) => {
@@ -72,7 +74,7 @@ export class NewCreditComponent {
 
   tokenValue() {
     if (this.requestForm.get("amount").value !== "") {
-      this.totalTokens = this.requestForm.get("amount").value / 500;
+      this.totalTokens = this.requestForm.get("amount").value / 5;
     }
   }
 
@@ -88,7 +90,7 @@ export class NewCreditComponent {
   }
   requestCredit() {
     this.loading = true;
-    this.sendCoin(this.amount);
+    this.sendCoin();
     setTimeout(() => {
       this.success = true;
     }, 10000);
