@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-import { Observable } from "rxjs";
+import { Observable, Subject } from 'rxjs';
 // import { fromPromise } from 'rxjs/observable/fromPromise';
 
 // import { environment } from '../../environments/environment';
@@ -12,6 +12,7 @@ declare var window: any;
 @Injectable()
 export class Web3Service {
   public web3: any;
+  public accountsObservable = new Subject<string[]>();
 
   constructor() {
     this.checkAndInstantiateWeb3();

@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from "@angular/core";
 import { Web3Service } from "../services/web3.service";
 // import { Web3Service } from "../util/web3.service";
 import { AngelTokenService } from "../services/angel-token.service";
+// import { AngelHackService } from '../services/angel-hack.service';
 
 // declare let require: any;
 // const angeltoken_artifacts = require("../../../build/contracts/AngelToken.json");
@@ -29,21 +30,35 @@ export class LoanComponent implements OnInit {
   constructor(
     private _ngZone: NgZone,
     private web3Service: Web3Service,
-    private angelTokenService: AngelTokenService
+    private angelTokenService: AngelTokenService,
+    // private angelHackService: AngelHackService
   ) {
-    console.log("Constructor: " + web3Service);
+      console.log("Constructor: " + web3Service);
+      setInterval(() => this.refreshAccount(), 100);
+      // this.angelHackService.trasferOwnership().subscribe(
+      //   result => {
+      //     console.log(result);
+      //   },
+      //   error => {
+      //     console.log(error);
+
+      //   }
+      // );
+    }
+  refreshAccount() {
     this.web3Service.getAccounts().subscribe(
       accs => {
         this.accounts = accs;
+        // console.log(this.accounts);
         this.account = this.accounts[0];
-        console.log(this.account);
+        // console.log(this.account);
         this.refreshBalance();
       },
       err => alert(err)
     );
   }
-
   ngOnInit(): void {
+    // setInterval(() => this.refreshBalance(), 100);
     console.log("OnInit: " + this.web3Service);
     // this.getBalance("0xf0d9828044fd544007b73b54c68a0b6c6edbb01a");
     // this.watchAccount();
@@ -52,7 +67,13 @@ export class LoanComponent implements OnInit {
     //         this.AngelToken = AngelTokenAbstraction;
     //     });
   }
-
+  watchAccount() {
+    this.web3Service.accountsObservable.subscribe((accounts) => {
+      this.accounts = accounts;
+      this.model.account = accounts[0];
+      this.refreshBalance();
+    });
+  }
   setStatus(status) {
     // this.matSnackBar.open(status, null, { duration: 3000 });
     console.log("status");
@@ -85,7 +106,7 @@ export class LoanComponent implements OnInit {
           this.balance = response.c[0];
         },
         error => {
-          console.log(error);
+          // console.log(error);
         }
       )
     );
