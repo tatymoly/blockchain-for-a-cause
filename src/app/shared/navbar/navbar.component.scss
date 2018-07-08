@@ -11,6 +11,12 @@ nav {
     color: black;
   }
 }
+.sidenav-fixed {
+  top: 65px;
+  .background {
+    background: $secondary-color;
+  }
+}
 .brand-logo {
   img {
     width: 100px;

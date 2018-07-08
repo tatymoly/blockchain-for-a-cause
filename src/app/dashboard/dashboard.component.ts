@@ -1,38 +1,44 @@
-import { Component, AfterViewInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import * as M from "materialize-css/dist/js/materialize";
-import * as Chart from "chart.js";
+// import * as Chart from "chart.js";
+import { Chart } from "chart.js";
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "dashboard.component.html",
   styleUrls: ["dashboard.component.scss"]
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent implements OnInit {
   canvas: any;
   ctx: any;
-
+  myChart;
+  @ViewChild("myChart") myCanvas: ElementRef;
   constructor() {}
 
-  ngAfterViewInit() {
-    this.canvas = document.getElementById("myChart");
-    this.ctx = this.canvas.getContext("2d");
-    let myChart = new Chart(this.ctx, {
-      type: "pie",
+  ngOnInit() {
+    this.buildChart();
+  }
+
+  buildChart() {
+    let ctx = this.myCanvas.nativeElement.getContext("2d");
+    this.myChart = new Chart(ctx, {
+      type: "bar",
       data: {
-        labels: ["New", "In Progress", "On Hold"],
         datasets: [
           {
-            label: "# of Votes",
-            data: [1, 2, 3],
-            backgroundColor: [
-              "rgba(255, 99, 132, 1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)"
-            ],
-            borderWidth: 1
+            label: "Bar Dataset",
+            data: [10, 20, 30, 40]
+          },
+          {
+            label: "Line Dataset",
+            data: [50, 50, 50, 50],
+
+            // Changes this dataset to become a line
+            type: "line"
           }
-        ]
+        ],
+        labels: ["January", "February", "March", "April"]
       }
     });
   }

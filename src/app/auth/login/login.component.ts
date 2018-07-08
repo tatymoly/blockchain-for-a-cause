@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { LoginService } from "../../shared/services/index";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
+import * as firebase from "firebase/app";
+
 @Component({
   selector: "app-login",
   templateUrl: "login.component.html",
@@ -41,6 +43,15 @@ export class LoginComponent {
         .then(result => {
           console.log(result);
           if (result) {
+            firebase
+              .auth()
+              .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+              .then(() => {
+                //TO DO
+              })
+              .catch(error => {
+                //TO DO
+              });
             this.router.navigate(["mi-cuenta"]);
           } else {
             this.invalidCredentials = true;

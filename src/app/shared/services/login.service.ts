@@ -14,6 +14,7 @@ export class LoginService {
   login(email: string, password: string) {
     return this._firebaseAuth.auth
       .signInWithEmailAndPassword(email, password)
+      .then()
       .catch(error => {});
   }
 }
