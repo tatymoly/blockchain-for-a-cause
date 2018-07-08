@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, NgZone } from "@angular/core";
+import { Component, ViewChild, ElementRef, NgZone, OnInit } from "@angular/core";
 import { Web3Service } from "../services/web3.service";
 import { AngelTokenService } from "../services/angel-token.service";
 
@@ -7,7 +7,7 @@ import { AngelTokenService } from "../services/angel-token.service";
   templateUrl: "dashboard.component.html",
   styleUrls: ["dashboard.component.scss"]
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   accounts: string[];
   account: string;
   balance = 0;
@@ -20,6 +20,9 @@ export class DashboardComponent {
     console.log("Constructor: " + web3Service);
     this.refreshAccount();
     // setInterval(() => this.refreshAccount(), 100);
+  }
+  ngOnInit() {
+    this.refreshAccount();
   }
   refreshAccount() {
     this.web3Service.getAccounts().subscribe(
@@ -48,7 +51,7 @@ export class DashboardComponent {
     this._ngZone.run(() =>
       this.angelTokenService.getBalance(this.account).subscribe(
         (response: any) => {
-          this.balance = response.c[0];
+          this.balance = response.c[0]/100;
           this.monedaLocal = this.balance * 500;
         },
         error => {

@@ -34,9 +34,6 @@ export class NewCreditComponent {
     this.requestFormValid();
   }
   sendCoin(amount) {
-    // const amount = this.model.amount;
-    // const receiver = this.model.receiver;
-
     console.log("Sending coins" + amount + " to " + "0xb1d28E599359545060F29eE73DeecE5ec69f03A4");
 
     this.angelTokenService
@@ -48,11 +45,9 @@ export class NewCreditComponent {
       .subscribe(
         (response: any) => {
           console.log(response);
-          console.log(response.c[0]);
-          // this.refreshBalance();
+          // console.log(response.c[0]);
         },
         error => {
-          // this.refreshBalance();
           console.log(error);
         }
       );
@@ -96,15 +91,6 @@ export class NewCreditComponent {
     this.sendCoin(this.amount);
     setTimeout(() => {
       this.success = true;
-    }, 3000);
+    }, 10000);
   }
-  // setAmount(e) {
-  //   console.log("Setting amount: " + e.target.value);
-  //   this.model.amount = e.target.value;
-  // }
-
-  // setReceiver(e) {
-  //   console.log("Setting receiver: " + e.target.value);
-  //   this.model.receiver = e.target.value;
-  // }
 }
