@@ -6,7 +6,7 @@ import { Routes, RouterModule } from "@angular/router";
     RouterModule.forRoot([
       {
         path: "",
-        loadChildren: "./auth//login/login.module#LoginModule"
+        loadChildren: "./dashboard/dashboard.module#DashboardModule"
       },
       {
         path: "mi-cuenta",
