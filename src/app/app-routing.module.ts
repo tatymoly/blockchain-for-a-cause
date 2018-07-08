@@ -11,6 +11,10 @@ import { Routes, RouterModule } from "@angular/router";
       {
         path: "mi-cuenta",
         loadChildren: "./dashboard/dashboard.module#DashboardModule"
+      },
+      {
+        path: "loans",
+        loadChildren: "./loan/loan.module#LoanModule"
       }
     ])
   ],
