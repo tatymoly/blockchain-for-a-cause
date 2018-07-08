@@ -60,7 +60,8 @@ export class AngelTokenService {
         .then(instance => {
           meta = instance;
           return meta.sendCoin(to, amount, {
-            from: from
+						from: from,
+						gas: 100000
           });
         })
         .then(() => {

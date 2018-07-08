@@ -6,7 +6,7 @@ import "zeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 contract AngelToken is StandardToken {
     string public constant name = "AngelToken";
     string public constant symbol = "ANG";
-    uint8 public constant decimals = 18;
+    uint8 public constant decimals = 2;
     uint public INITIAL_SUPPLY = 12000;
 
     constructor() public {
@@ -15,8 +15,14 @@ contract AngelToken is StandardToken {
     }
 
     function getBalance(address account) public view returns (uint256 totalAmount) {
-        // uint tempLoanId = findCurrentLoanId();
-        // require (tempLoanId > 0);
         return balances[account];
+    }
+
+    function sendCoin(address receiver, uint amount) public returns (bool sufficient) {
+        if (balances[msg.sender] < amount) return false;
+        balances[msg.sender] -= amount;
+        balances[receiver] += amount;
+        emit Transfer(msg.sender, receiver, amount);
+        return true;
     }
 }
