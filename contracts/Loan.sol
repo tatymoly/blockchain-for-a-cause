@@ -29,7 +29,6 @@ contract Loan {
         uint256 loanAmount;
         uint256 interestRate;
         uint256 signingDate;
-        string purposeLoan;
         uint256 tranches;
         bool confirmed;
     }
@@ -72,7 +71,7 @@ contract Loan {
     /*
     * Lender requests Loan 
     */
-    function requestLoan(string lenderName, string borrowerName, address borrowerAddress, string purposeLoan, uint256 loanAmount, uint256 tranchesTmp, uint256 interestRate, uint256 signingDate, uint256 firstDrawdownDate) public returns (bool success) {
+    function requestLoan(string lenderName, string borrowerName, address borrowerAddress, uint256 loanAmount, uint256 tranchesTmp, uint256 interestRate, uint256 signingDate, uint256 firstDrawdownDate) public returns (bool success) {
         
         loanId++;
         
@@ -81,7 +80,7 @@ contract Loan {
     
         lenders[msg.sender] = Lender(msg.sender, lenderName, loanId);
         borrowers[borrowerAddress] = Borrower(borrowerAddress, borrowerName, loanId);
-        loans[loanId] = LoanData(lenders[msg.sender],borrowers[borrowerAddress], loanAmount, interestRate, signingDate, purposeLoan, tranchesTmp, false);
+        loans[loanId] = LoanData(lenders[msg.sender],borrowers[borrowerAddress], loanAmount, interestRate, signingDate, tranchesTmp, false);
         
         uint256 firstDrawdownAmount = loanAmount/tranchesTmp;
         uint256 _openCommitement = loanAmount - firstDrawdownAmount;
@@ -89,8 +88,17 @@ contract Loan {
         
         loanProgress[loanId] = Progress(loanId, firstDrawdownDate, firstDrawdownAmount, _openCommitement, firstDrawdownAmount, 0, 0, false);
 
+        return checkAFP();
+    }
+
+    function checkAFP() public returns (bool) {
+       /*
+        Checks whether or not borrower is qualified to get the loan, using Previred's API.
+        We can't actually do this during the hackaton so it will just return true
+        */
         return true;
     }
+
 
     /*
     * Borrower confirms the loan
