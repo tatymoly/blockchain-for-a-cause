@@ -1,14 +1,15 @@
 <div class="row center-align main-charts">
     <div class="row">
-        <button routerLink="/mis-creditos" class="btn col s10 offset-s1">MIS CRÉDITOS</button>
+        <!-- <button routerLink="/mis-creditos" class="btn col s10 offset-s1">MIS CRÉDITOS</button> -->
+        <button routerLink="/solicitar-credito" class="btn col s10 offset-s1 solicitar">Solicitar Crédito</button>
     </div>
     <div class="row">
         <div class="col s12 m7">
             <div class="card">
                 <div class="card-content">
                     <h2>Balance disponible</h2>
-                    <p>COINS: 20</p>
-                    <p>CLP: $200.000</p>
+                    <p>Tkens: {{ balance }}</p>
+                    <p>CLP: ${{ monedaLocal }}  </p>
                 </div>
                 <div class="card-action">
                     <a>Comisión taker: 0,29%</a>
@@ -20,17 +21,17 @@
     </div>
 </div>
 <div class="row center-align main-credits">
-    <div class="row">
-        <button routerLink="/solicitar-credito" class="btn col s10 offset-s1 solicitar">Solicitar Crédito</button>
-        <button class="btn col s10 offset-s1 pagar">Pagar mis Créditos</button>
-    </div>
+    <!-- <div class="row"> -->
+        <!-- <button routerLink="/solicitar-credito" class="btn col s10 offset-s1 solicitar">Solicitar Crédito</button> -->
+        <!-- <button class="btn col s10 offset-s1 pagar">Pagar mis Créditos</button> -->
+    <!-- </div> -->
     <div class="row">
         <div class="col s12 m7">
             <div class="card">
                 <div class="card-content">
                     <h2>Mis Tokens</h2>
-                    <p>200</p>
-                    <p>CLP: $200.000</p>
+                    <p> {{balance}} </p>
+                    <p>CLP: ${{monedaLocal}}</p>
                 </div>
                 <div class="card-action">
                     <a>Valor token del día: 500</a>

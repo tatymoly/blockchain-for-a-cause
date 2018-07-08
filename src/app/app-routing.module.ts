@@ -16,6 +16,10 @@ import { Routes, RouterModule } from "@angular/router";
         path: "loans",
         loadChildren: "./loan/loan.module#LoanModule"
       },
+      {
+        path: "solicitar-credito",
+        loadChildren: "./new-credit/new-credit.module#NewCreditModule"
+      },
     ])
   ],
   exports: [RouterModule]
