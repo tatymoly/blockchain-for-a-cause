@@ -27,9 +27,10 @@
     "firebase": "^5.2.0",
     "hammerjs": "^2.0.8",
     "materialize-css": "^1.0.0-rc.2",
+    "openzeppelin-solidity": "1.10.0",
     "rxjs": "^6.0.0",
     "truffle-contract": "^3.0.6",
-    "zeppelin-solidity": "1.10.0",
+    "zeppelin-solidity": "^1.10.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

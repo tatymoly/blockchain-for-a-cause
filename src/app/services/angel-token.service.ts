@@ -22,7 +22,7 @@ export class AngelTokenService {
     return Observable.create(observer => {
       this.AngelToken.deployed()
         .then(instance => {
-					console.log(instance);
+					// console.log(instance);
 					return instance.getBalance.call(account, { from: account });
         })
         .then(value => {
@@ -30,7 +30,7 @@ export class AngelTokenService {
           observer.complete();
         })
         .catch(e => {
-          console.log(e);
+          // console.log(e);
           observer.error(e);
         });
     });
