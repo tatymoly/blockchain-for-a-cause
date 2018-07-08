@@ -13,4 +13,10 @@ contract AngelToken is StandardToken {
         totalSupply_ = INITIAL_SUPPLY;
         balances[msg.sender] = INITIAL_SUPPLY;
     }
+
+    function getBalance(address account) public view returns (uint256 totalAmount) {
+        // uint tempLoanId = findCurrentLoanId();
+        // require (tempLoanId > 0);
+        return balances[account];
+    }
 }

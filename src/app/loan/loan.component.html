@@ -6,17 +6,18 @@
             <div class="card-content">
                 <span class="card-title">Balance</span>
                 <div class="input-field">
-                    <select name="account" (selectionChange)="refreshBalance()" [(value)]="model.account">
+                </div>
+                <div class="input-field">
+                    <select name="account" (selectionChange)="refreshBalance()" [(value)]="model.account" style="display: block;">
                         <option value="0" disabled selected>Selecciona una wallet</option>
-                        <option value="1">Selecciona una wallet</option>
                         <option *ngFor="let account of accounts" [value]="account">{{account}}</option>
                     </select>
-                    <label>Selecciona una wallet</label>
+                    <!-- <label>Selecciona una wallet</label> -->
                 </div>
 
             </div>
             <div class="card-action">
-                <p>Tienes<span id="balance">{{model.balance}}</span> AngelCoin</p>
+                <p>Tienes <span id="balance">{{balance}}</span> AngelCoin</p>
             </div>
         </div>
     </div>
