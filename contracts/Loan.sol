@@ -83,7 +83,7 @@ contract Loan {
             //this needs to be changes to accept Many to Many 
         
             lenders[msg.sender] = Lender(msg.sender, lenderName, loanId);
-            borrowers[borrowerAddress] = Borrower(borrowerAddress, borrowerName, loanId);
+            borrowers[borrowerAddress] = Borrower(borrowerAddress, borrowerName, borrowerIdNumber, loanId);
             loans[loanId] = LoanData(lenders[msg.sender],borrowers[borrowerAddress], loanAmount, interestRate, signingDate, tranchesTmp, false);
             
             uint256 firstDrawdownAmount = loanAmount/tranchesTmp;
@@ -102,7 +102,11 @@ contract Loan {
         Checks whether or not borrower is qualified to get the loan, using Previred's API.
         We can't actually do this during the hackaton so it will just return true
         */
-        return true;
+        if (borrowerIdNumber != 0) {
+            return true;
+
+        }
+
     }
 
 
