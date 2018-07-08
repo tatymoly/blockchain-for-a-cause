@@ -17,12 +17,8 @@ import { Routes, RouterModule } from "@angular/router";
         loadChildren: "./loan/loan.module#LoanModule"
       },
       {
-        path: "mis-creditos",
-        loadChildren: "./credit/credit.module#CreditModule"
-      },
-      {
         path: "solicitar-credito",
-        loadChildren: "./credit/new-credit/new-credit.module#NewCreditModule"
+        loadChildren: "./new-credit/new-credit.module#NewCreditModule"
       }
     ])
   ],
