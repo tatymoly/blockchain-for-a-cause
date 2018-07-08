@@ -13,6 +13,7 @@ import * as firebase from "firebase/app";
 export class LoginComponent {
   loginForm: FormGroup;
   invalidCredentials = false;
+  loading;
 
   constructor(
     private route: ActivatedRoute,

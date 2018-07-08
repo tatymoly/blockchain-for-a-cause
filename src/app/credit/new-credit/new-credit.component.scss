@@ -1,0 +1,29 @@
+$primary-color: #00a94a;
+$secondary-color: #006cad;
+h2 {
+  font-weight: 600;
+}
+.label-cuotas {
+  font-size: 16px;
+  top: -40px;
+  left: 5px;
+}
+.solicitar-button {
+  margin-top: 40px;
+  button {
+    background: $primary-color;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+form {
+  margin-top: 20px;
+}
+
+.progress {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  .indeterminate {
+    background: $primary-color;
+  }
+}
