@@ -1,7 +1,12 @@
+$third-color: #ffc000;
 .card-content {
   min-height: 160px;
   h2 {
     margin-top: 5px;
     font-weight: 600;
   }
+}
+.btn {
+  background: $third-color;
+  color: white;
 }

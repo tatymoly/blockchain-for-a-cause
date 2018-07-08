@@ -1,0 +1,97 @@
+<div *ngIf="!success">
+    <div *ngIf="!validRequest" class="row">
+        <div class="col s12 center-align">
+            <h2>Crédito de Consumo</h2>
+        </div>
+        <form class="col s12 l6 offset-l3" name="form" [formGroup]="requestForm" (ngSubmit)="request()">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="amount" name="amount" type="text" class="validate" (keyup)="tokenValue()" formControlName="amount">
+                    <label for="amount">Monto Solicitado $</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="tokens" name="tokens" placeholder="Tokens" type="text" class="validate" formControlName="tokens" [(ngModel)]="totalTokens"
+                        readonly>
+
+                </div>
+                <div class="input-field col s12">
+                    <input id="rut" name="rut" type="text" class="validate" formControlName="rut">
+                    <label for="rut">RUT</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="salary" name="salary" type="text" class="validate" formControlName="salary">
+                    <label for="salary">Renta $</label>
+                </div>
+                <div class="input-field col s12">
+                    <select style="display: block;" id="payments" name="payments" formControlName="payments">
+                        <option value="" disabled selected>Selecciona el numero de cuotas</option>
+                        <option value="6">6 Cuotas</option>
+                        <option value="12">12 Cuotas</option>
+                        <option value="18">18 Cuotas</option>
+                        <option value="24">24 Cuotas</option>
+                    </select>
+                </div>
+                <div class="col s12 center-align solicitar-button">
+                    <button class="btn waves-effect col s12" type="submit">Simular Crédito</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="validRequest" class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="center-align">
+                        <h2>Simulación estimada</h2>
+                    </div>
+                    <div>
+                        <h3>Monto Solicitado</h3>
+                        <p>{{ amount }}</p>
+                    </div>
+                    <div>
+                        <h3>Equivalente en Tokens</h3>
+                        <p>{{ totalTokens }}</p>
+                    </div>
+                    <div>
+                        <h3>% de Interés</h3>
+                        <p>{{ interes }}</p>
+                    </div>
+                    <div>
+                        <h3>Valor cuota mensual</h3>
+                        <p>{{ cuotaMensual }}</p>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a>Cuotas totales: {{ cuotas }}</a>
+                    <br>
+                    <a>Fecha primera cuota: 10/08/2018</a>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="loading" class="progress">
+            <div class="indeterminate"></div>
+        </div>
+        <div class="col s12 center-align solicitar-button">
+            <button (click)="requestCredit()" class="btn waves-effect col s12">Solicitar Crédito</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="success" class="row">
+    <div class="col s12 m7">
+        <div class="card">
+            <div class="card-content">
+                <h2 style="color: #00a94a">Tu crédito ha sido aprobado!</h2>
+                <p>Tokens: {{ totalTokens }}</p>
+                <p>CLP: ${{ amount }}</p>
+            </div>
+            <div class="card-action">
+                <a>Valor token del día: 500</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 center-align solicitar-button">
+        <button routerLink="/mi-cuenta" class="btn waves-effect col s12">Ir a mi cuenta</button>
+    </div>
+</div>

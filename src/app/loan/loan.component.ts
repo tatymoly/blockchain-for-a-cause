@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from "@angular/core";
 import { Web3Service } from "../services/web3.service";
 // import { Web3Service } from "../util/web3.service";
-import { AngelTokenService } from '../services/angel-token.service';
+import { AngelTokenService } from "../services/angel-token.service";
 
 // declare let require: any;
 // const angeltoken_artifacts = require("../../../build/contracts/AngelToken.json");
@@ -74,19 +74,21 @@ export class LoanComponent implements OnInit {
       error => {
         this.refreshBalance();
         console.log(error);
-      });
+      }
+    );
   }
 
   refreshBalance() {
-    this._ngZone.run(() => this.angelTokenService.getBalance(this.account).subscribe(
-      (response: any) => {
-        this.balance = response.c[0];
-      },
-      error => {
-        console.log(error);
-
-      }
-    ));
+    this._ngZone.run(() =>
+      this.angelTokenService.getBalance(this.account).subscribe(
+        (response: any) => {
+          this.balance = response.c[0];
+        },
+        error => {
+          console.log(error);
+        }
+      )
+    );
   }
 
   getBalance(account: any) {
@@ -97,7 +99,6 @@ export class LoanComponent implements OnInit {
       },
       error => {
         console.log(error);
-
       }
     );
   }

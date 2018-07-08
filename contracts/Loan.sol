@@ -83,7 +83,7 @@ contract Loan {
             //this needs to be changes to accept Many to Many 
         
             lenders[msg.sender] = Lender(msg.sender, lenderName, loanId);
-            borrowers[borrowerAddress] = Borrower(borrowerAddress, borrowerName, borrowerIdNumber, loanId);
+            borrowers[borrowerAddress] = Borrower(borrowerAddress, borrowerName, loanId, 12);
             loans[loanId] = LoanData(lenders[msg.sender],borrowers[borrowerAddress], loanAmount, interestRate, signingDate, tranchesTmp, false);
             
             uint256 firstDrawdownAmount = loanAmount/tranchesTmp;
