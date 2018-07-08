@@ -1,0 +1,113 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css?family=Asap:400,500,600");
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+$font-stack: "Asap", sans-serif;
+
+/* Resets */
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  font-family: $font-stack;
+}
+
+.row .col {
+  padding: 0 15px;
+}
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+button {
+  box-shadow: none;
+}
+
+a {
+  color: inherit;
+}
+a:focus,
+a:hover {
+  text-decoration: none !important;
+}
+/* Global variables */
+$primary-color: #00a94a;
+$secondary-color: #006cad;
+$third-color: #ffc000;
+$fourth-color: #ff1700;
+$gray-dark: #828282;
+$gray-medium: #e0e0e0;
+$gray-light: #f3f3f3;
+/* Font Sizes */
+
+p {
+  font-size: 16px;
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 16px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+
+h2 {
+  color: $secondary-color;
+}
+.input-field {
+  border: none;
+
+  input {
+    margin: 0;
+  }
+}
+label {
+  width: auto !important;
+  padding-left: 10px;
+}
+
+/* label focus color */
+.input-field input:focus + label {
+  color: $secondary-color !important;
+}
+
+/* label underline focus color */
+.input-field input:focus {
+  border-bottom: 1px solid $secondary-color !important;
+  box-shadow: none !important;
+  color: #000;
+}
+/* valid color */
+.input-field input.valid {
+  border-bottom: 1px solid #000;
+  box-shadow: none !important;
+}
+/* invalid color */
+.input-field input.invalid {
+  border-bottom: 1px solid #000;
+  box-shadow: none !important;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #000;
+}
+
+@media only screen and (min-width: 992px) {
+  h2 {
+    font-size: 42px;
+    font-weight: 600;
+    margin-top: 42px;
+  }
+}
+
+.helper-text {
+  color: $fourth-color !important;
+}

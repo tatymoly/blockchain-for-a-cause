@@ -1,13 +1,16 @@
+$secondary-color: #006cad;
 nav {
   background: white;
   ul {
     a {
-      color: #00bcd4;
-      font-weight: 600;
+      color: $secondary-color;
+      font-weight: 500;
     }
   }
+  .sidenav-trigger {
+    color: black;
+  }
 }
-
 .brand-logo {
   img {
     width: 100px;
