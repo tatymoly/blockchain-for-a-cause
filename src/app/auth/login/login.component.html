@@ -1,0 +1,37 @@
+<div class="row login-section">
+    <div class="col s12 center-align">
+        <h2>Ingresa a tu cuenta</h2>
+    </div>
+    <form class="col s12 l4 offset-l4 login-datos" name="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" type="email" class="validate" name="email" formControlName="email">
+                <label for="email">Correo Electrónico*</label>
+                <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched || invalidCredentials">
+                    <span *ngIf="loginForm.get('email').hasError('required') || 
+                        loginForm.get('email').hasError('email')" class="helper-text">* Correo inválido</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" name="password" class="validate" formControlName="password">
+                <label for="password">Contraseña*</label>
+            </div>
+        </div>
+        <div class="row mail-password-wrong">
+            <div class="col s12" *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched || invalidCredentials">
+                <span *ngIf="loginForm.get('password').hasError('required') || loginForm.get('password').hasError('password') || invalidCredentials"
+                    class="helper-text col s12">* El correo electrónico o la contraseña es incorrecta. Si no recuerdas tu contraseña,
+                    <a href="/recordar-contrasena">restablécela ahora.</a>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <button [disabled]="loading" class="btn col s8 offset-s2 l12" type="submit" name="action">INGRESAR</button>
+        </div>
+        <div class="row center-align olvide-contraseña">
+            <a href="/recordar-contrasena">¿Olvidaste tu Contraseña?</a>
+        </div>
+    </form>
+</div>

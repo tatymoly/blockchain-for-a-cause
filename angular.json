@@ -21,6 +21,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "node_modules/materialize-css/dist/css/materialize.min.css",
+              "src/sass/app.scss",
               "src/styles.scss"
             ],
             "scripts": [

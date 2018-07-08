@@ -1,0 +1,11 @@
+$secondary-color: #006cad;
+$third-color: #ffc000;
+.login-section {
+  form {
+    margin-top: 20px;
+    button {
+      background: $secondary-color;
+      color: white;
+    }
+  }
+}
